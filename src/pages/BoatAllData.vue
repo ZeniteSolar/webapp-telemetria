@@ -43,9 +43,10 @@ export default {
     return {
       search: "",
       headers: [
-        { text: "Código", value: "data_time" },
-        { text: "Simbolo", value: "info" },
-        { text: "Valor", value: "ts_complete" }
+        { text: "Data e Horário", value: "data_time" },
+        { text: "Módulo", value: "mod" },
+        { text: "Info", value: "info" },
+        { text: "Time Completo", value: "ts_complete" }
       ],
       data: []
     };
