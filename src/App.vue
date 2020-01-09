@@ -80,7 +80,7 @@ export default {
         "icon-alt": "mdi-chevron-down",
         text: "Boat Modules",
         model: false,
-        children: [{ icon: "mdi-battery-80", text: "Baterry" }]
+        children: [{ icon: "mdi-battery-80", text: "Bombas de Porão" }]
       }
       // {
       //   icon: "mdi-chevron-up",
