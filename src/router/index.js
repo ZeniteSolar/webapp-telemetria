@@ -11,7 +11,8 @@ const router = new VueRouter({
     routes: [
         { path: '/', component: HelloWorld },
         { path: '/boat-all-data', component: BoatAllData },
-        { path: '/module/:mod', component: Module }
+        { path: '/module/:mod', component: Module },
+        { path: '/module/', component: Module }
     ],
     mode: 'history'
 });
