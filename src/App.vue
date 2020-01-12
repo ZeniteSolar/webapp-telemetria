@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
+    <v-navigation-drawer temporary v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
       <Menu />
     </v-navigation-drawer>
 
@@ -12,7 +12,11 @@
     </v-app-bar>
 
     <v-content>
+      <v-container fluid>
+        
       <router-view></router-view>
+
+      </v-container>
     </v-content>
 
     <v-dialog v-model="dialog" width="800px">
@@ -67,7 +71,7 @@ export default {
   },
   data: () => ({
     dialog: false,
-    drawer: null,
+    drawer: false,
     items: [
       { icon: "mdi-lock", text: "Login Page", link: "/login" },
       {

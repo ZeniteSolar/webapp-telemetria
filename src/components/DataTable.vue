@@ -1,6 +1,5 @@
 <template>
-    <v-row>
-      <v-col cols="12">
+    <div>
         <v-card>
           <v-card-title>
             Informações
@@ -22,34 +21,12 @@
            :footer-props="{itemsPerPageOptions: [100,500,1000,-1]}"
           ></v-data-table>
         </v-card>
-      </v-col>
-    </v-row>
+    </div>
 </template>
 
 <script>
-import Api from '@/services/api';
-
 export default {
-  name: "Tasks",
-  components: {},
-  mounted() {
-    
-    var mod_params = this.$route.params.mod;
-    
-    if( mod_params == null){
-      Api().get('/module').then((data)=>{
-        this.data = data.data;
-      });
-    }else{
-      var base = "module"
-      // var mod_params = this.$route.params.mod;
-      var url = "/" + base + "/" + mod_params;
-      Api().get(url).then((data)=>{
-        this.data = data.data;
-      })
-    }
-    
-  },
+  name: "DataTable",
   data() {
     return {
       search: "",
@@ -67,21 +44,8 @@ export default {
         { text: "Byte 7", value: "byte[7]" },
         { text: "Time Completo", value: "ts_complete" }
       ],
-      data: [],
-      type: [],
-      breadcrumbs: [
-        {
-          text: 'Início',
-          disabled: false,
-          href: '/',
-        },
-        {
-          text: 'All Data',
-          disabled: false,
-          href: 'module',
-        }
-      ],
-    };
-  },
+      data: []
+    }
+  }
 };
 </script>

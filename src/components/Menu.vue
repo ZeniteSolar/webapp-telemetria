@@ -1,5 +1,5 @@
 <template>
-  <v-list dense>
+  <v-list shaped>
     <template v-for="item in items">
       <v-row v-if="item.heading" :key="item.heading" align="center">
         <v-col cols="6">
@@ -49,19 +49,28 @@ export default {
   name: "Menu",
   data: () => ({
     items: [
-      { icon: "mdi-lock", text: "Login Page", link: "/login" },
+      {
+        icon: "mdi-lock",
+        text: "Corridas",
+        link: "/intervals" },
       {
         icon: "mdi-sailing",
-        text: "All Data Boat List",
-        link: "/boat-all-data"
+        text: "Log - All Data",
+        link: "/module"
       },
       {
-        icon: "mdi-chevron-up",
-        "icon-alt": "mdi-chevron-down",
-        text: "Boat Modules",
-        model: false,
-        children: [{ icon: "mdi-battery-80", text: "Baterry" }]
+        icon: "mdi-sim",
+        text: "Módulos e Tópicos",
+        link: "/module/config"
       }
+
+      // {
+      //   icon: "mdi-chevron-up",
+      //   "icon-alt": "mdi-chevron-down",
+      //   text: "Boat Modules",
+      //   model: false,
+      //   children: [{ icon: "mdi-battery-80", text: "Baterry" }]
+      // }
       // {
       //   icon: "mdi-chevron-up",
       //   "icon-alt": "mdi-chevron-down",
