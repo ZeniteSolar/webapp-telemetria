@@ -19,10 +19,8 @@
             :items="data"
             :search="search"
             dense
-            items-per-page="100"
             multi-sort
-            :loading="loading"
-            :footer-props="{itemsPerPageOptions: [100,500,1000,-1]}"
+           :footer-props="{itemsPerPageOptions: [100,500,1000,-1]}"
           ></v-data-table>
         </v-card>
       </v-col>
@@ -75,6 +73,5 @@ export default {
       type: []
     };
   },
-  loading: false
 };
 </script>
