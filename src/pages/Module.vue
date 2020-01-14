@@ -61,7 +61,7 @@ export default {
     return {
       search: "",
       headers: [
-        { text: "Assnatura", value: "signature" },
+        { text: "Assinatura", value: "signature" },
         { text: "Nome", value: "name" },
         { text: "Descrição", value: "description" }
       ],

@@ -3,7 +3,7 @@
       <v-col cols="12">
         <v-card>
           <v-card-title>
-            Informações
+            Log de Dados
             <v-spacer></v-spacer>
             <v-text-field
               v-model="search"
@@ -52,10 +52,9 @@ export default {
     return {
       search: "",
       headers: [
-        { text: "Data e Horário", value: "data_time" },
-        { text: "Módulo", value: "mod" },
-        { text: "Info", value: "info" },
-        { text: "Signature", value: "byte[0]" },
+        { text: "Data & Time", value: "data_time" },
+        { text: "Tópico", value: "mod" },
+        { text: "Byte 0 - Módulo", value: "byte[0]" },
         { text: "Byte 1", value: "byte[1]" },
         { text: "Byte 2", value: "byte[2]" },
         { text: "Byte 3", value: "byte[3]" },
@@ -63,7 +62,7 @@ export default {
         { text: "Byte 5", value: "byte[5]" },
         { text: "Byte 6", value: "byte[6]" },
         { text: "Byte 7", value: "byte[7]" },
-        { text: "Time Completo", value: "ts_complete" }
+        { text: "Payload (Hex)", value: "info" },
       ],
       data: [],
       type: [],

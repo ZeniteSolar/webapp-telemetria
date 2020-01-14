@@ -55,7 +55,7 @@ export default {
         link: "/intervals" },
       {
         icon: "mdi-sailing",
-        text: "Log - All Data",
+        text: "Log de Dados",
         link: "/data"
       },
       {
