@@ -3,7 +3,7 @@
       <v-col cols="12">
         <v-card>
           <v-card-title>
-            Informações
+            Módulos
             <v-spacer></v-spacer>
             <v-text-field
               v-model="search"
@@ -17,10 +17,17 @@
             :headers="headers"
             :items="data"
             :search="search"
-            dense
             multi-sort
-           :footer-props="{itemsPerPageOptions: [100,500,1000,-1]}"
-          ></v-data-table>
+           :footer-props="{itemsPerPageOptions: [10,25,50,-1]}"
+          >
+            <template v-slot:item="{ item }">
+              <router-link tag="tr" :to="{ path: '/module/' + item.signature }">
+                <td class="text-xs-right">{{ item.signature }}</td>
+                <td class="text-xs-right">{{ item.name }}</td>
+                <td class="text-xs-right">{{ item.description }}</td>
+              </router-link>
+            </template>
+          </v-data-table>
         </v-card>
       </v-col>
     </v-row>
@@ -54,34 +61,20 @@ export default {
     return {
       search: "",
       headers: [
-        { text: "Data e Horário", value: "data_time" },
-        { text: "Módulo", value: "mod" },
-        { text: "Info", value: "info" },
-        { text: "Signature", value: "byte[0]" },
-        { text: "Byte 1", value: "byte[1]" },
-        { text: "Byte 2", value: "byte[2]" },
-        { text: "Byte 3", value: "byte[3]" },
-        { text: "Byte 4", value: "byte[4]" },
-        { text: "Byte 5", value: "byte[5]" },
-        { text: "Byte 6", value: "byte[6]" },
-        { text: "Byte 7", value: "byte[7]" },
-        { text: "Time Completo", value: "ts_complete" }
+        { text: "Assnatura", value: "signature" },
+        { text: "Nome", value: "name" },
+        { text: "Descrição", value: "description" }
       ],
       data: [],
       type: [],
-      breadcrumbs: [
-        {
-          text: 'Início',
-          disabled: false,
-          href: '/',
-        },
-        {
-          text: 'All Data',
-          disabled: false,
-          href: 'module',
-        }
-      ],
     };
   },
+  methods : {
+    getColor (signature) {
+        if (signature > 400) return 'red'
+        else if (signature > 200) return 'orange'
+        else return 'green'
+      }
+  }
 };
 </script>

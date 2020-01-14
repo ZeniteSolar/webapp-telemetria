@@ -56,12 +56,12 @@ export default {
       {
         icon: "mdi-sailing",
         text: "Log - All Data",
-        link: "/module"
+        link: "/data"
       },
       {
         icon: "mdi-sim",
         text: "Módulos e Tópicos",
-        link: "/module/config"
+        link: "/module"
       }
 
       // {

@@ -19,7 +19,7 @@
             :search="search"
             dense
             multi-sort
-           :footer-props="{itemsPerPageOptions: [10,25,50,-1]}"
+           :footer-props="{itemsPerPageOptions: [100,500,1000,-1]}"
           ></v-data-table>
         </v-card>
       </v-col>
@@ -30,20 +30,18 @@
 import Api from '@/services/api';
 
 export default {
-  name: "Tasks",
+  name: "Data",
   components: {},
   mounted() {
     
     var mod_params = this.$route.params.mod;
     
     if( mod_params == null){
-      Api().get('/module').then((data)=>{
+      Api().get('/data').then((data)=>{
         this.data = data.data;
       });
     }else{
-      var base = "module"
-      // var mod_params = this.$route.params.mod;
-      var url = "/" + base + "/" + mod_params;
+      var url = "/data/"+mod_params;
       Api().get(url).then((data)=>{
         this.data = data.data;
       })
@@ -54,12 +52,33 @@ export default {
     return {
       search: "",
       headers: [
-        { text: "Nome", value: "data_time" },
-        { text: "Descrição", value: "mod" },
-        { text: "Assinatura", value: "info" }
+        { text: "Data e Horário", value: "data_time" },
+        { text: "Módulo", value: "mod" },
+        { text: "Info", value: "info" },
+        { text: "Signature", value: "byte[0]" },
+        { text: "Byte 1", value: "byte[1]" },
+        { text: "Byte 2", value: "byte[2]" },
+        { text: "Byte 3", value: "byte[3]" },
+        { text: "Byte 4", value: "byte[4]" },
+        { text: "Byte 5", value: "byte[5]" },
+        { text: "Byte 6", value: "byte[6]" },
+        { text: "Byte 7", value: "byte[7]" },
+        { text: "Time Completo", value: "ts_complete" }
       ],
       data: [],
       type: [],
+      breadcrumbs: [
+        {
+          text: 'Início',
+          disabled: false,
+          href: '/',
+        },
+        {
+          text: 'All Data',
+          disabled: false,
+          href: 'module',
+        }
+      ],
     };
   },
 };
