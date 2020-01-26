@@ -1,18 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import HelloWorld from '../components/HelloWorld'
+import Home from '../components/HelloWorld'
 import Module from '../pages/Module'
-import Data from '../pages/Data'
+import Log from '../pages/Log'
+import Topic from '../pages/Topic'
+import Label from '../pages/Label'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+Vue.use(require('vue-moment'));
 
 const router = new VueRouter({
     routes: [
-        { path: '/', component: HelloWorld },
-        { path: '/data/:mod', component: Data },
-        { path: '/data/', component: Data },
-        { path: '/module/', component: Module }
+        { path: '/', component: Home },
+        { path: '/log/', component: Log },
+        { path: '/log/:mod', component: Log },
+        { path: '/modulos/', component: Module },
+        { path: '/modulo/:mod', component: Topic },
+        { path: '/marcadores/', component: Label }
     ],
     mode: 'history'
 });

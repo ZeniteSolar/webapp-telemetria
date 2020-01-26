@@ -3,31 +3,9 @@
       <v-col cols="12">
         <v-card>
           <v-card-title>
-            Módulos
-            <v-spacer></v-spacer>
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              single-line
-              hide-details
-            ></v-text-field>
+            Listagem de Todas Informações de Módulos e Tópicos
           </v-card-title>
-          <v-data-table
-            :headers="headers"
-            :items="data"
-            :search="search"
-            multi-sort
-           :footer-props="{itemsPerPageOptions: [25,50,100,-1]}"
-          >
-            <template v-slot:item="{ item }">
-              <router-link tag="tr" :to="{ path: '/modulo/' + item.signature }">
-                <td class="text-xs-right">{{ item.signature }}</td>
-                <td class="text-xs-right">{{ item.name }}</td>
-                <td class="text-xs-right">{{ item.description }}</td>
-              </router-link>
-            </template>
-          </v-data-table>
+            <json-view :data="data" rootKey="Módulos" :maxDepth="2" />
         </v-card>
       </v-col>
     </v-row>
@@ -35,26 +13,30 @@
 
 <script>
 import Api from '@/services/api';
+import { JSONView } from "vue-json-component";
 
 export default {
-  name: "Tasks",
-  components: {},
+  name: "Topics",
+  components: {
+    "json-view": JSONView 
+  },
   mounted() {
     
     var mod_params = this.$route.params.mod;
     
     if( mod_params == null){
-      Api().get('/mat/').then((data)=>{
+      Api().get('/m/ls-all').then((data)=>{
         this.data = data.data;
       });
     }else{
-      var base = "mat"
+      var base = "module"
       // var mod_params = this.$route.params.mod;
       var url = "/" + base + "/" + mod_params;
       Api().get(url).then((data)=>{
         this.data = data.data;
       })
     }
+    
   },
   data() {
     return {

@@ -50,18 +50,18 @@ export default {
   data: () => ({
     items: [
       {
-        icon: "mdi-lock",
-        text: "Corridas",
-        link: "/intervals" },
+        icon: "mdi-bookmark-multiple",
+        text: "Marcadores",
+        link: "/marcadores" },
       {
-        icon: "mdi-sailing",
+        icon: "mdi-console",
         text: "Log de Dados",
-        link: "/data"
+        link: "/log"
       },
       {
         icon: "mdi-sim",
         text: "Módulos e Tópicos",
-        link: "/module"
+        link: "/modulos"
       }
 
       // {
