@@ -15,6 +15,7 @@ let store = new Vuex.Store({
         let data = state.data;
         if(data.length > 0) {
           let last = data[0];
+          // let last = data[(data.length - 1)];
           return last.x;
         }
         return null;    
@@ -49,7 +50,7 @@ let store = new Vuex.Store({
     appendData(state,newData) {
         let data = _.cloneDeep(state.data);
         newData = _.cloneDeep(newData);
-        state.data = [...data,...newData];
+        state.data = [...newData, ...data];
     }
   }
 });
