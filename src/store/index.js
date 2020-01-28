@@ -1,15 +1,57 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vuex from 'vuex';
+import Vue from 'vue';
+import Api from '@/services/api';
+import _ from 'lodash';
 
 Vue.use(Vuex);
 
-exports default new Vuex.Store({
-    state: {
-        boatData: [
-            { "_id": "5dffd195dbe977463d6f62a9", "ts": 1570322086, "ts_u": 983453, "ts_complete": 1570322086.983453, "data_time": "2019-10-05 21:34:46.983", "info": "e60200", "date_on_mongo": "2019-12-22T20:27:01.086Z", "__v": 0 },
-            { "_id": "5dffd196dbe977463d6f62aa", "ts": 1570322087, "ts_u": 86854, "ts_complete": 1570322087.86854, "data_time": "2019-10-05 21:34:47.869", "info": "e60000", "date_on_mongo": "2019-12-22T20:27:02.082Z", "__v": 0 },
-            { "_id": "5dffd197dbe977463d6f62ab", "ts": 1570322087, "ts_u": 351445, "ts_complete": 1570322087.351445, "data_time": "2019-10-05 21:34:47.351", "info": "e60000", "date_on_mongo": "2019-12-22T20:27:03.085Z", "__v": 0 },
-            { "_id": "5dffd198dbe977463d6f62ac", "ts": 1570322087, "ts_u": 507139, "ts_complete": 1570322087.507139, "data_time": "2019-10-05 21:34:47.507", "info": "e60200", "date_on_mongo": "2019-12-22T20:27:04.089Z", "__v": 0 }
-        ]
+let store = new Vuex.Store({
+  state: {
+    data: [],
+  },
+  getters: {
+    //filter: state => date =>  state.data.filter(item => item.x = date);  
+    lastDate(state) {
+        let data = state.data;
+        if(data.length > 0) {
+          let last = data[(data.length - 1)];
+          return last.x;
+        }
+        return null;    
     }
+  },
+  actions: {
+    appendData: ({commit, getters}, options) => {
+        return new Promise((resolve) => {
+            //let allFromDate = getters['filter']('2015-332-322');
+            let latestDate = getters['lastDate']
+            console.log(latestDate);
+            Api().get(options.url, {params: {latestDate: latestDate}}).then((data)=>{
+                console.log(data.data);
+                commit('appendData', data.data)
+                resolve(data.data)
+            })
+        })
+    },
+    loadData: function({commit}, options) {
+        return new Promise((resolve) => {
+            Api().get(options.url).then((data)=>{
+                commit('setData', data.data)
+                resolve(data.data)
+            })
+        })      
+    },
+  },
+  mutations: {
+    setData(state,data) {
+        state.data = data;
+    },
+    appendData(state,newData) {
+        let data = _.cloneDeep(state.data);
+        newData = _.cloneDeep(newData);
+        state.data = [...data,...newData];
+    }
+  }
 });
+
+export default store;
