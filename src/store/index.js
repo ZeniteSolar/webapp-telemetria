@@ -14,7 +14,7 @@ let store = new Vuex.Store({
     lastDate(state) {
         let data = state.data;
         if(data.length > 0) {
-          let last = data[(data.length - 1)];
+          let last = data[0];
           return last.x;
         }
         return null;    

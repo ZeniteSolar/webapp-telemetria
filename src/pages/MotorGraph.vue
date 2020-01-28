@@ -87,9 +87,9 @@ export default {
     init() {
       this.$store.dispatch('loadData',{url: '/motor/'}).then(() => {
         this.renderChart();
-        window.setTimeout(() => {
-          this.appendData();
-        }, 1000);
+        // window.setTimeout(() => {
+        //   this.appendData();
+        // }, 1000);
       });
     },
     appendData() {
