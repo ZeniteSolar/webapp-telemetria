@@ -62,15 +62,12 @@ export default {
         icon: "mdi-sim",
         text: "Módulos e Tópicos",
         link: "/modulos"
+      },
+      {
+        icon: "mdi-sim",
+        text: "Motor Duty Cicle",
+        link: "/motor"
       }
-
-      // {
-      //   icon: "mdi-chevron-up",
-      //   "icon-alt": "mdi-chevron-down",
-      //   text: "Boat Modules",
-      //   model: false,
-      //   children: [{ icon: "mdi-battery-80", text: "Baterry" }]
-      // }
       // {
       //   icon: "mdi-chevron-up",
       //   "icon-alt": "mdi-chevron-down",
@@ -83,7 +80,7 @@ export default {
       //     { text: "Undo changes" },
       //     { text: "Other contacts" }
       //   ]
-      // },
+      // }
       // { icon: "mdi-settings", text: "Settings" },
       // { icon: "mdi-message", text: "Send feedback" },
       // { icon: "mdi-help-circle", text: "Help" },

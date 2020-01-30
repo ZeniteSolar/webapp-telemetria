@@ -37,7 +37,7 @@ export default {
     var mod_params = this.$route.params.mod;
     
     if( mod_params == null){
-      Api().get('/data').then((data)=>{
+      Api().get('/data/').then((data)=>{
         this.data = data.data;
       });
     }else{
