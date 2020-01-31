@@ -35,34 +35,38 @@ export default {
   mounted() {
     
     var mod_params = this.$route.params.mod;
-    
+    var top_params = this.$route.params.top;
+    var url = "/data/";
+
     if( mod_params == null){
-      Api().get('/data').then((data)=>{
+      url = "/data/";
+    }else{
+      if (top_params == null){
+        url = "/data/"+mod_params;
+      }else{
+        url = "/data/"+mod_params+"/"+top_params;
+      }
+    }
+
+    Api().get(url).then((data)=>{
         this.data = data.data;
       });
-    }else{
-      var url = "/data/"+mod_params;
-      Api().get(url).then((data)=>{
-        this.data = data.data;
-      })
-    }
     
   },
   data() {
     return {
       search: "",
       headers: [
-        { text: "Data & Time", value: "data_time" },
-        { text: "Tópico", value: "mod" },
-        { text: "Byte 0 - Módulo", value: "byte[0]" },
-        { text: "Byte 1", value: "byte[1]" },
-        { text: "Byte 2", value: "byte[2]" },
-        { text: "Byte 3", value: "byte[3]" },
-        { text: "Byte 4", value: "byte[4]" },
-        { text: "Byte 5", value: "byte[5]" },
-        { text: "Byte 6", value: "byte[6]" },
-        { text: "Byte 7", value: "byte[7]" },
-        { text: "Payload (Hex)", value: "info" },
+        { text: "Data & Time", value: "date" },
+        { text: "Módulo", value: "mod" },
+        { text: "Tópico", value: "top" },
+        { text: "Byte 1", value: "bytes[1]" },
+        { text: "Byte 2", value: "bytes[2]" },
+        { text: "Byte 3", value: "bytes[3]" },
+        { text: "Byte 4", value: "bytes[4]" },
+        { text: "Byte 5", value: "bytes[5]" },
+        { text: "Byte 6", value: "bytes[6]" },
+        { text: "Byte 7", value: "bytes[7]" }
       ],
       data: [],
       type: [],

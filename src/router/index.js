@@ -16,6 +16,7 @@ const router = new VueRouter({
         { path: '/', component: Home },
         { path: '/log/', component: Log },
         { path: '/log/:mod', component: Log },
+        { path: '/log/:mod/:top', component: Log },
         { path: '/modulos/', component: Module },
         { path: '/modulo/:mod', component: Topic },
         { path: '/marcadores/', component: Label },
