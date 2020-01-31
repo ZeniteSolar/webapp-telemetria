@@ -6,7 +6,7 @@ import Module from '../pages/Module'
 import Log from '../pages/Log'
 import Topic from '../pages/Topic'
 import Label from '../pages/Label'
-import Motor from '../pages/MotorGraph'
+import Charts from '../pages/Charts'
 
 Vue.use(VueRouter);
 Vue.use(require('vue-moment'));
@@ -20,7 +20,8 @@ const router = new VueRouter({
         { path: '/modulos/', component: Module },
         { path: '/modulo/:mod', component: Topic },
         { path: '/marcadores/', component: Label },
-        { path: '/motor/', component: Motor }
+        { path: '/grafico/', component: Charts },
+        { path: '/grafico/:mod/:top/:byte', component: Charts }
     ],
     mode: 'history'
 });

@@ -64,6 +64,7 @@ export default {
         },
         yaxis: {
           labels: {},
+          min: 0,
           title: {
             text: 'Price'
           },
@@ -85,7 +86,19 @@ export default {
   }),
   methods: {
     init() {
-      this.$store.dispatch('loadData',{url: '/motor/'}).then(() => {
+      let mod = this.$route.params.mod;
+      let top = this.$route.params.top;
+      let byte = this.$route.params.byte;
+      let url = 'motor';
+
+      if(mod == null){
+        url = 'motor';
+      }else{
+        url = '/motor/' + mod + '/' + top + '/' + byte;
+      }
+
+      console.log(mod)
+      this.$store.dispatch('loadData',{url: url}).then(() => {
         this.renderChart();
         // window.setTimeout(() => {
         //   this.appendData();
