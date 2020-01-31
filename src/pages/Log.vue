@@ -29,14 +29,16 @@
 <script>
 import Api from '@/services/api';
 
+
+
 export default {
   name: "Data",
   components: {},
   mounted() {
-    
-    var mod_params = this.$route.params.mod;
-    var top_params = this.$route.params.top;
-    var url = "/data/";
+
+    let mod_params = this.$route.params.mod;
+    let top_params = this.$route.params.top;
+    let url = "/data/";
 
     if( mod_params == null){
       url = "/data/";
