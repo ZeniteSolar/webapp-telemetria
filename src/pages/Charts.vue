@@ -48,10 +48,6 @@ export default {
         markers: {
           size: 0,
         },
-        title: {
-          text: 'Stock Price Movement',
-          align: 'left'
-        },
         fill: {
           type: 'gradient',
           gradient: {
@@ -64,10 +60,7 @@ export default {
         },
         yaxis: {
           labels: {},
-          min: 0,
-          title: {
-            text: 'Price'
-          },
+          min: 0
         },
         xaxis: {
           type: 'datetime',
@@ -86,18 +79,29 @@ export default {
   }),
   methods: {
     init() {
+
       let mod = this.$route.params.mod;
       let top = this.$route.params.top;
-      let byte = this.$route.params.byte;
       let url = 'motor';
-
-      if(mod == null){
-        url = 'motor';
+ 
+      if(this.$route.params.byteL == null){
+        if(mod == null){
+          url = 'motor';
+        }else{
+          let byte = this.$route.params.byte;
+          url = '/motor/' + mod + '/' + top + '/' + byte;
+        }
       }else{
-        url = '/motor/' + mod + '/' + top + '/' + byte;
-      }
 
-      console.log(mod)
+          let byteL = this.$route.params.byteL;
+          let byteH = this.$route.params.byteH;
+
+          url = '/motor/' + mod + '/' + top + '/' + byteL + '/' + byteH;
+
+      }
+        
+
+
       this.$store.dispatch('loadData',{url: url}).then(() => {
         this.renderChart();
         // window.setTimeout(() => {

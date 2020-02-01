@@ -7,6 +7,7 @@ import Log from '../pages/Log'
 import Topic from '../pages/Topic'
 import Label from '../pages/Label'
 import Charts from '../pages/Charts'
+import Dash from '../pages/Dash'
 
 Vue.use(VueRouter);
 Vue.use(require('vue-moment'));
@@ -21,7 +22,9 @@ const router = new VueRouter({
         { path: '/modulo/:mod', component: Topic },
         { path: '/marcadores/', component: Label },
         { path: '/grafico/', component: Charts },
-        { path: '/grafico/:mod/:top/:byte', component: Charts }
+        { path: '/grafico/:mod/:top/:byte', component: Charts },
+        { path: '/grafico/:mod/:top/:byteL/:byteH', component: Charts },
+        { path: '/dash/', component: Dash }
     ],
     mode: 'history'
 });
