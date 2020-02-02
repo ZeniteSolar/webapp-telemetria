@@ -1,11 +1,24 @@
 <template>
+    <v-container fluid>
     <v-row>
       <v-col cols="12">
-
-        
-
+        <v-row
+          align="start"
+          justify="start"
+          class="grey lighten-5"
+          style="height: 300px;"
+        >
+          <v-card
+            class="ma-3 pa-6"
+            outlined
+            tile
+          >
+          Teste
+          </v-card>
+        </v-row>
       </v-col>
     </v-row>
+  </v-container>
 </template>
 
 <script>

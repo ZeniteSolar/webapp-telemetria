@@ -2,10 +2,6 @@
     <v-row>
       <v-col cols="12">
         <v-card>
-          <v-card-title>
-            Motor Duty Cycle
-            <v-spacer></v-spacer>
-          </v-card-title>
             <div>
               <apexchart type="area" height="350" :options="chartOptions" :series="series" ref="chart"></apexchart>
             </div>
